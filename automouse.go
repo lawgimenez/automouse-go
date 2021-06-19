@@ -2,10 +2,16 @@ package main
 
 import (
 	"github.com/go-vgo/robotgo"
+  "math/rand"
+  "time"
 )
 
 func main() {
-  robotgo.ScrollMouse(10, "up")
-  robotgo.MouseClick("left", true)
-  robotgo.MoveMouseSmooth(100, 200, 1.0, 100.0)
+  for range time.Tick(time.Minute * 1) {
+    go doMouseStuffs()
+  }
+}
+
+func doMouseStuffs() {
+  robotgo.MoveSmooth(rand.Intn(1000), rand.Intn(500))
 }
